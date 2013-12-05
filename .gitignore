@@ -4,3 +4,12 @@
 *.jar
 *.war
 *.ear
+
+#eclipse
+chess/.classpath
+chess/.project
+chess/.settings/
+
+#maven
+chess/target/
+
