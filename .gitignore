@@ -11,5 +11,5 @@ chess/.project
 chess/.settings/
 
 #maven
-chess/target/
+chess/target/*
 
