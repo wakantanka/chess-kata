@@ -3,11 +3,12 @@
  */
 package it.wt;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -30,10 +31,12 @@ public class FigureTest {
 	}
 	@Test
 	public void testInstanceCompare() {
-		Player farbe = Player.LIGHT;
-		Player farbe1 = Player.LIGHT;
 		Position startPosition = new Position(0, 1);
 		Position startPosition1 = new Position(0, 1);
+		Position startPosition2 = startPosition1;
+
+		Player farbe = Player.LIGHT;
+		Player farbe1 = Player.LIGHT;
 
 		assertEquals("string", "string");
 		assertTrue("string" == "string");
@@ -41,8 +44,9 @@ public class FigureTest {
 		assertEquals(farbe, farbe1);
 		assertTrue(farbe == farbe1);
 
-		assertEquals(startPosition, startPosition1);
-		assertTrue(startPosition == startPosition1);
+		assertFalse(startPosition == startPosition1); 
+		assertTrue(startPosition2 == startPosition1);
+		assertEquals(startPosition, startPosition1);  //nur weil equals überschrieben ist
 
 
 		List<String> list = new ArrayList<String>();

@@ -11,7 +11,9 @@ update WindowBuilder
 Nicolas:
 abstract onchmal erklären
 konsturktoren 
-equals bei objekten
+ 
+
+
 
 Generics ()
 http://stackoverflow.com/questions/2501023/demonstrate-covariance-and-contravariance-in-java
