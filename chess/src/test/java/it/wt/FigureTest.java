@@ -22,7 +22,7 @@ public class FigureTest {
 	public void testInstanciatePawn() {
 		Player farbe = Player.LIGHT;
 		Position startPosition = new Position(0, 1);
-		IChessBoard chessboard;
+		IChessBoard chessboard; 
 		
 		
 		// Figure bauer = new Pawn(farbe, startPosition, chessboard);

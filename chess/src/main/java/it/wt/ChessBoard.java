@@ -1,8 +1,7 @@
 package it.wt;
 
-import java.util.HashMap;
 
-import org.apache.commons.collections.map.HashedMap;
+//import org.apache.commons.collections.map.HashedMap;
 
 public class ChessBoard implements IChessBoard {
 // extends Jpanel
