@@ -6,10 +6,10 @@
 *.ear
 
 #eclipse
-*/.classpath
-*/.project
-*/.settings/
+**/.classpath
+**/.project
+**/.settings/
 
 #maven
-*/target/*
+**/target/*
 

@@ -38,6 +38,7 @@ public class Chessboard extends JPanel implements IChessboard {
 	private Chessboard(IChess chess) {
 		setBounds(10, 10, 910, 910);
 		setLayout(new GridLayout(8, 9, 0, 0));
+	//		fields = new HashMap<>();
 		Chessfield[][] chessfield = new Chessfield[8][8];
 
 		for (int i = 0; i < chessfield.length; i++) {
