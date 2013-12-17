@@ -6,10 +6,10 @@
 *.ear
 
 #eclipse
-chess/.classpath
-chess/.project
-chess/.settings/
+*/.classpath
+*/.project
+*/.settings/
 
 #maven
-chess/target/*
+*/target/*
 

@@ -36,10 +36,17 @@ public class CarTest {
 	private Map<WheelPosition, Wheel> getWheelMap() {
 		Wheel perelly = new Wheel();
 		Map<WheelPosition, Wheel> wheelMap = new HashMap<WheelPosition, Wheel>() ;
-		wheelMap.put (   WheelPosition.FRONT_LEFT, perelly  );
-		wheelMap.put (   WheelPosition.FRONT_RIGHT, perelly  );
-		wheelMap.put (   WheelPosition.BACK_LEFT, perelly  );
-		wheelMap.put (   WheelPosition.BACK_LEFT, perelly  );
+		
+			
+		
+		for (WheelPosition pos : WheelPosition.values()) {
+			wheelMap.put (pos, perelly);
+		}
+		
+//		wheelMap.put (   WheelPosition.FRONT_LEFT, perelly  );
+//		wheelMap.put (   WheelPosition.FRONT_RIGHT, perelly  );
+//		wheelMap.put (   WheelPosition.BACK_LEFT, perelly  );
+//		wheelMap.put (   WheelPosition.BACK_LEFT, perelly  );
 		return wheelMap;
 	}
 	
