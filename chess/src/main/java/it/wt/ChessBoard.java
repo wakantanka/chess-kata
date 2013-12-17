@@ -1,10 +1,13 @@
 package it.wt;
 
+import javax.swing.JPanel;
+
 
 //import org.apache.commons.collections.map.HashedMap;
 
-public class ChessBoard implements IChessBoard {
-// extends Jpanel
+@SuppressWarnings("serial")
+public class ChessBoard extends JPanel implements IChessBoard {
+// 
 //	var turn, status, selectedFigure, SelectedField,  static ChessBoard(Singelton)
 //	HashMap fields
 //	Meth startGaben nextTurn
