@@ -24,6 +24,11 @@ public class Chessboard extends JPanel implements IChessboard {
 
 	private static final long serialVersionUID = 1L;
 	private HashMap<Position, Chessfield> fields;
+	
+	/*private*/  HashMap<Position, Chessfield> getFields() {
+		return fields;
+	}
+
 	private Player turn;
 	private Chessfield selectedField;
 	private Figure selectedFigure;
@@ -70,17 +75,24 @@ public class Chessboard extends JPanel implements IChessboard {
 	public void startGame() {
 		
 		//bereits vorhandene Figuren vom Schachbrett l�schen.
-		for (Chessfield field : fields.values()) {
-			field.figure = null;
-			field.repaint();
-		}
+		clearBoard(fields);
 
 		// erschaffe Bauern:
-		for (int x = 0; x < 8; x++) {
-			fields.get(new Position(x, 1)).setFigure(new Pawn(Player.WHITE, new Position(x, 1), this));
-			fields.get(new Position(x, 6)).setFigure(new Pawn(Player.BLACK, new Position(x, 6), this));
-		}
+		createPawns();
 
+		// erschaffe K�nige:
+		createKings();
+
+		setTurn(Player.BLACK);
+		nextTurn();
+	}
+
+	 void setTurn(Player turn) {
+		this.turn = turn;
+	}
+	void createKings() {
+		fields.get(new Position(4, 0)).setFigure(new King(Player.WHITE, new Position(4, 0), this));
+		fields.get(new Position(4, 7)).setFigure(new King(Player.BLACK, new Position(4, 7), this));
 		// erschaffe T�rme:
 //		fields.get(new Position(0, 0)).setFigure(new Rook(Player.WHITE, new Position(0, 0), this));
 //		fields.get(new Position(7, 0)).setFigure(new Rook(Player.WHITE, new Position(7, 0), this));
@@ -103,12 +115,21 @@ public class Chessboard extends JPanel implements IChessboard {
 //		fields.get(new Position(3, 0)).setFigure(new Queen(Player.WHITE, new Position(3, 0), this));
 //		fields.get(new Position(3, 7)).setFigure(new Queen(Player.BLACK, new Position(3, 7), this));
 
-		// erschaffe K�nige:
-		fields.get(new Position(4, 0)).setFigure(new King(Player.WHITE, new Position(4, 0), this));
-		fields.get(new Position(4, 7)).setFigure(new King(Player.BLACK, new Position(4, 7), this));
+	
+	}
 
-		turn = Player.BLACK;
-		nextTurn();
+	void createPawns() {
+		for (int x = 0; x < 8; x++) {
+			fields.get(new Position(x, 1)).setFigure(new Pawn(Player.WHITE, new Position(x, 1), this));
+			fields.get(new Position(x, 6)).setFigure(new Pawn(Player.BLACK, new Position(x, 6), this));
+		}
+	}
+
+	void clearBoard( HashMap<Position, Chessfield> fields) {
+		for ( Chessfield field : fields.values()) {
+			field.figure = null; 
+			field.repaint();
+		}
 	}
  
 	public void nextTurn() {
@@ -126,19 +147,19 @@ public class Chessboard extends JPanel implements IChessboard {
 			}
 		}
 		if (noWhite) {
-			status(Status.BLACK_WINS);
+			setStatus(Status.BLACK_WINS);
 			return;
 		}
 		if (noBlack) {
-			status(Status.WHITE_WINS);
+			setStatus(Status.WHITE_WINS);
 			return;
 		}
 		if (turn == Player.WHITE) {
 			turn = Player.BLACK;
-			status(Status.NEXTTURN_BLACK);
+			setStatus(Status.NEXTTURN_BLACK);
 		} else {
 			turn = Player.WHITE;
-			status(Status.NEXTTURN_WHITE);
+			setStatus(Status.NEXTTURN_WHITE);
 		}
 		for (Chessfield field : fields.values()) {
 			if (field.figure != null) {
@@ -148,7 +169,7 @@ public class Chessboard extends JPanel implements IChessboard {
 		}
 	}
 
-	private void status(Status status) {
+	private void setStatus(Status status) {
 		this.status = status;
 		chess.status(status);
 	}
@@ -278,6 +299,12 @@ public class Chessboard extends JPanel implements IChessboard {
 				}
 			}
 			return false;
+		}
+
+		@Override
+		public String toString() {
+			return "Chessfield [position=" + position + ", figure=" + figure
+					+ "]";
 		}
 
 	}

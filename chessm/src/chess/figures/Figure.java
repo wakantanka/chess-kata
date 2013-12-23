@@ -14,6 +14,11 @@ import chess.IChessboard.Player;
 
 public abstract class Figure {
 
+	@Override
+	public String toString() {
+		return "Figure [player=" + player + ", [name=" + this.getClass().getCanonicalName()  + " ]";
+	}
+
 	protected Player player;
 	protected Position position;
 	protected IChessboard chessboard;

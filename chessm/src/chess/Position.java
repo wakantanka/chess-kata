@@ -2,6 +2,11 @@ package chess;
 
 public class Position {
 
+	@Override
+	public String toString() {
+		return "Position [x=" + x + ", y=" + y + "]";
+	}
+
 	private final int x;
 	private final int y;
 
