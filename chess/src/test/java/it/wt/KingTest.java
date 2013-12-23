@@ -19,43 +19,43 @@ import org.junit.Test;
  * 
  */
 public class KingTest {
-	Figure bauer = null;
+	Figure king = null;
 	
 	@Before
 	public  void setUp() {
 		Player farbe = Player.LIGHT;
 		Position startPosition = new Position(1, 0);
 		IChessBoard chessboard = ChessBoard.getInstance();
-		 bauer = new Pawn(farbe, startPosition, chessboard);
-		System.out.println("setup" + bauer.getPosition().toString());
+		 king = new King(farbe, startPosition, chessboard);
+		System.out.println("setup" + king.getPosition().toString());
 	}
 
 	@Test
 	public void testInstanciatePawn() {
 		 
-		assertNotNull("bauer should not be null",  bauer);
+		assertNotNull("bauer should not be null",  king);
 		
 	}
 	
 	
 	@Test
-	public void testMovePawn() {
-		System.out.println("test" + bauer.getPosition().toString());
+	public void testKingPawn() {
+		System.out.println("test" + king.getPosition().toString());
 		
-		assertEquals("wrong Position", new Position(1, 0), bauer.getPosition());
+		assertEquals("wrong Position", new Position(1, 0), king.getPosition());
 		Position destPosition = new Position(2,0);
-		bauer.move(destPosition);
-		assertEquals("wrong Position", new Position(2, 0), bauer.getPosition());
+		king.move(destPosition);
+		assertEquals("wrong Position", new Position(2, 0), king.getPosition());
 		
 	}
 	
 	@Test
-	public void testMovePawnNeg() {
+	public void testMoveKingNeg() {
 
-		assertEquals("wrong Position", new Position(1, 0), bauer.getPosition());
-		Position destPosition = new Position(2,4);
-		bauer.move(destPosition);
-		assertEquals(new Position(1, 0), bauer.getPosition());
+		assertEquals("wrong Position", new Position(1, 0), king.getPosition());
+		Position destPosition = new Position(1,4);
+		king.move(destPosition);
+		assertEquals(new Position(1, 0), king.getPosition());
 		
 	}
 }
