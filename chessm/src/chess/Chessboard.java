@@ -180,7 +180,7 @@ public class Chessboard extends JPanel implements IChessboard {
 
 		private final Position position;
 
-		private Figure figure;
+		  Figure figure;
 
 		private void setFigure(Figure figure) {
 			this.figure = figure;
@@ -322,5 +322,7 @@ public class Chessboard extends JPanel implements IChessboard {
 		}
 		return fields.get(position);
 	}
+	
+	
 
 }
