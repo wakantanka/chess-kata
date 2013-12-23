@@ -18,7 +18,7 @@ import org.junit.Test;
  * @author kurs
  * 
  */
-public class PawnTest {
+public class KingTest {
 	Figure bauer = null;
 	
 	@Before

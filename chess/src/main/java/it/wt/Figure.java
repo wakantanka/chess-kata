@@ -17,20 +17,21 @@ import java.util.concurrent.CopyOnWriteArraySet;
 			this.position = startPosition;
 			this.chessboard = chessboard;
 //			imagePath = "images";
-//			reachablePositions = new CopyOnWriteArraySet<ChessBoard.Position>() ;
-			reachablePositions = new CopyOnWriteArraySet<Position>() ;
+			reachablePositions = new CopyOnWriteArraySet<Position>() {
+				private static final long serialVersionUID = 1L;
+			} ;
 		}
 
 		public Position getPosition() {
 			return position;
 		}
 
-		public void move(Position destPosition) {
-			
-			this.position = destPosition;
-			
-		}
+		public abstract void move(Position destPosition);
 
+		public Set<Position> getReachablePositions(){
+			return reachablePositions;
+		}
+		
 		
 //		King, Knight, Pawn
 //		RunningFiure: Bishop, Rook, Queen
