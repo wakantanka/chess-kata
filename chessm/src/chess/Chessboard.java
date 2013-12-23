@@ -110,7 +110,7 @@ public class Chessboard extends JPanel implements IChessboard {
 		turn = Player.BLACK;
 		nextTurn();
 	}
-
+ 
 	public void nextTurn() {
 		boolean noBlack = true;
 		boolean noWhite = true;
@@ -282,11 +282,11 @@ public class Chessboard extends JPanel implements IChessboard {
 
 	}
 
-	public Chessfield getField(Position position, int x, int y) {
-		return getField(new Position(position.getX() + x, position.getY() + y));
+	public Chessfield getFieldOnBoardAfterMove(Position position, int x, int y) {
+		return getFieldOnBoard(new Position(position.getX() + x, position.getY() + y));
 	}
 
-	public Chessfield getField(Position position) {
+	public Chessfield getFieldOnBoard(Position position) {
 		if (position.getX() > 7) {
 			return null;
 		}

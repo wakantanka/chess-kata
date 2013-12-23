@@ -16,6 +16,8 @@ public class MasterTest  {
 		chess.setVisible(true);
 		chess.setSize(900, 900);
 		chess.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		
 
 		chess.chessboard.startGame();
 		
