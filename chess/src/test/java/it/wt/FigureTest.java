@@ -24,9 +24,39 @@ public class FigureTest {
 		Player farbe = Player.LIGHT;
 		Position startPosition = new Position(0, 1);
 		IChessBoard chessboard = ChessBoard.getInstance();
-
+		
+		Figure bauer = new Pawn(farbe, startPosition, chessboard);
+		
+	}
+	
+	
+	@Test
+	public void testMovePawn() {
+		Player farbe = Player.LIGHT;
+		Position startPosition = new Position(1, 0);
+		IChessBoard chessboard = ChessBoard.getInstance();
+		
+		Figure bauer = new Pawn(farbe, startPosition, chessboard);
+		
+		assertEquals("wrong Position", new Position(1, 0), bauer.getPosition());
+		Position destPosition = new Position(2,0);
+		bauer.move(destPosition);
+		assertEquals("wrong Position", new Position(2, 0), bauer.getPosition());
+		
+	}
+	
+//	@Test
+	public void testMovePawnNeg() {
+		Player farbe = Player.LIGHT;
+		Position startPosition = new Position(1, 0);
+		IChessBoard chessboard = ChessBoard.getInstance();
 		Figure bauer = new Pawn(farbe, startPosition, chessboard);
 
+		assertEquals("wrong Position", new Position(1, 0), bauer.getPosition());
+		Position destPosition = new Position(2,4);
+		bauer.move(destPosition);
+		assertEquals(new Position(1, 0), bauer.getPosition());
+		
 	}
 
 	

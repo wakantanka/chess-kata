@@ -26,6 +26,26 @@ public class ChessBoard extends JPanel implements IChessBoard {
 		
 		return instance;
 	}
+
+	public Chessfield getField(Position position, int x, int y) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Chessfield getField(Position position) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void startGame() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static ChessBoard getChessboard(Chess chess) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 //	Class Position int x, int y 

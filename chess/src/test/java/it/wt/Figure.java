@@ -20,6 +20,17 @@ import java.util.concurrent.CopyOnWriteArraySet;
 //			reachablePositions = new CopyOnWriteArraySet<ChessBoard.Position>() ;
 			reachablePositions = new CopyOnWriteArraySet<Position>() ;
 		}
+
+		public Position getPosition() {
+			return position;
+		}
+
+		public void move(Position destPosition) {
+			
+			this.position = destPosition;
+			
+		}
+
 		
 //		King, Knight, Pawn
 //		RunningFiure: Bishop, Rook, Queen
