@@ -13,7 +13,7 @@ import java.awt.event.MouseEvent;
 public class Chess extends JFrame implements IChess {
 
 	private static final long serialVersionUID = 1L;
-	/* private */ Chessboard chessboard;
+	/* private */Chessboard chessboard;
 	private JLabel lblStatus;
 
 	public static void main(String[] arg) {

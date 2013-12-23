@@ -14,12 +14,12 @@ import chess.IChessboard.Player;
 
 public class MasterTest {
 
-//	@Test
+//	 @Test
 	public void testChess() {
 		Chess chess = new Chess();
 		chess.setName("Schach");
 		chess.setTitle("Schach");
-		// chess.setVisible(true);
+		chess.setVisible(true);
 		chess.setSize(900, 900);
 		chess.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -34,7 +34,7 @@ public class MasterTest {
 		for (Iterator<Entry<Position, Chessfield>> iterator = myFields
 				.entrySet().iterator(); iterator.hasNext();) {
 			currField = iterator.next();
-			
+
 			if (currField.getValue().figure != null) {
 				System.out.println(currField.getKey().toString());
 				System.out.println(currField.getValue().toString());
@@ -42,10 +42,9 @@ public class MasterTest {
 		}
 
 		try {
-			// Thread.sleep(3000L);
-			Thread.sleep(100L);
+			 Thread.sleep(3000L);
+//			Thread.sleep(100L);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
