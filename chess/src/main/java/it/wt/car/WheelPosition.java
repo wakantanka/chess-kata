@@ -4,7 +4,7 @@
 package it.wt.car;
 
 /**
- * @author kurs
+ * @author bs
  *
  */
 public enum WheelPosition {

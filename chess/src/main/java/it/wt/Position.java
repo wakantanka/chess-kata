@@ -18,6 +18,11 @@ public class Position {
 		return y;
 	}
 
+	@Override
+	public String toString() {
+		return "Position [x=" + x + ", y=" + y + "]";
+	}
+
 	// Equals & Hash Code relationship - The last note from the API
 	// documentation is very important, it states the relationship requirement
 	// between these two methods. It simply means that if two objects are equal,

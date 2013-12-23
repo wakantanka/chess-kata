@@ -7,7 +7,7 @@ import it.wt.Chessfield;
 import it.wt.Position;
 
 /**
- * @author kurs
+ * @author bs
  *
  */
 public interface IChessBoard {

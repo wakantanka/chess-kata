@@ -4,39 +4,43 @@
 package it.wt;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
-
+import static org.junit.Assert.assertNotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 
 /**
  * @author kurs
  * 
  */
-public class FigureTest {
+public class PawnTest {
+	Figure bauer = null;
+	
+	@Before
+	public  void setUp() {
+		Player farbe = Player.LIGHT;
+		Position startPosition = new Position(1, 0);
+		IChessBoard chessboard = ChessBoard.getInstance();
+		 bauer = new Pawn(farbe, startPosition, chessboard);
+		System.out.println("setup" + bauer.getPosition().toString());
+	}
 
 	@Test
 	public void testInstanciatePawn() {
-		Player farbe = Player.LIGHT;
-		Position startPosition = new Position(0, 1);
-		IChessBoard chessboard = ChessBoard.getInstance();
-		
-		Figure bauer = new Pawn(farbe, startPosition, chessboard);
+		 
+		assertNotNull("bauer should not be null",  bauer);
 		
 	}
 	
 	
 	@Test
 	public void testMovePawn() {
-		Player farbe = Player.LIGHT;
-		Position startPosition = new Position(1, 0);
-		IChessBoard chessboard = ChessBoard.getInstance();
-		
-		Figure bauer = new Pawn(farbe, startPosition, chessboard);
+		System.out.println("test" + bauer.getPosition().toString());
 		
 		assertEquals("wrong Position", new Position(1, 0), bauer.getPosition());
 		Position destPosition = new Position(2,0);
@@ -47,10 +51,6 @@ public class FigureTest {
 	
 //	@Test
 	public void testMovePawnNeg() {
-		Player farbe = Player.LIGHT;
-		Position startPosition = new Position(1, 0);
-		IChessBoard chessboard = ChessBoard.getInstance();
-		Figure bauer = new Pawn(farbe, startPosition, chessboard);
 
 		assertEquals("wrong Position", new Position(1, 0), bauer.getPosition());
 		Position destPosition = new Position(2,4);

@@ -6,7 +6,7 @@ package it.wt.car;
 import java.util.Map;
 
 /**
- * @author kurs
+ * @author bs
  *
  */
 public class BMW extends Car {
