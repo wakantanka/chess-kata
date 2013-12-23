@@ -12,13 +12,13 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import chess.Position;
-import chess.figures.Bishop;
+//import chess.figures.Bishop;
 import chess.figures.Figure;
 import chess.figures.King;
-import chess.figures.Knight;
 import chess.figures.Pawn;
-import chess.figures.Queen;
-import chess.figures.Rook;
+//import chess.figures.Knight;
+//import chess.figures.Queen;
+//import chess.figures.Rook;
 
 public class Chessboard extends JPanel implements IChessboard {
 
@@ -69,7 +69,7 @@ public class Chessboard extends JPanel implements IChessboard {
 
 	public void startGame() {
 		
-		//bereits vorhandene Figuren vom Schachbrett löschen.
+		//bereits vorhandene Figuren vom Schachbrett lï¿½schen.
 		for (Chessfield field : fields.values()) {
 			field.figure = null;
 			field.repaint();
@@ -81,29 +81,29 @@ public class Chessboard extends JPanel implements IChessboard {
 			fields.get(new Position(x, 6)).setFigure(new Pawn(Player.BLACK, new Position(x, 6), this));
 		}
 
-		// erschaffe Türme:
-		fields.get(new Position(0, 0)).setFigure(new Rook(Player.WHITE, new Position(0, 0), this));
-		fields.get(new Position(7, 0)).setFigure(new Rook(Player.WHITE, new Position(7, 0), this));
-		fields.get(new Position(0, 7)).setFigure(new Rook(Player.BLACK, new Position(0, 7), this));
-		fields.get(new Position(7, 7)).setFigure(new Rook(Player.BLACK, new Position(0, 7), this));
+		// erschaffe Tï¿½rme:
+//		fields.get(new Position(0, 0)).setFigure(new Rook(Player.WHITE, new Position(0, 0), this));
+//		fields.get(new Position(7, 0)).setFigure(new Rook(Player.WHITE, new Position(7, 0), this));
+//		fields.get(new Position(0, 7)).setFigure(new Rook(Player.BLACK, new Position(0, 7), this));
+//		fields.get(new Position(7, 7)).setFigure(new Rook(Player.BLACK, new Position(0, 7), this));
 
-		// erschaffe Läufer:
-		fields.get(new Position(2, 0)).setFigure(new Bishop(Player.WHITE, new Position(2, 0), this));
-		fields.get(new Position(5, 0)).setFigure(new Bishop(Player.WHITE, new Position(5, 0), this));
-		fields.get(new Position(2, 7)).setFigure(new Bishop(Player.BLACK, new Position(2, 7), this));
-		fields.get(new Position(5, 7)).setFigure(new Bishop(Player.BLACK, new Position(5, 7), this));
+		// erschaffe Lï¿½ufer:
+//		fields.get(new Position(2, 0)).setFigure(new Bishop(Player.WHITE, new Position(2, 0), this));
+//		fields.get(new Position(5, 0)).setFigure(new Bishop(Player.WHITE, new Position(5, 0), this));
+//		fields.get(new Position(2, 7)).setFigure(new Bishop(Player.BLACK, new Position(2, 7), this));
+//		fields.get(new Position(5, 7)).setFigure(new Bishop(Player.BLACK, new Position(5, 7), this));
 
 		// erschaffe Springer:
-		fields.get(new Position(1, 0)).setFigure(new Knight(Player.WHITE, new Position(1, 0), this));
-		fields.get(new Position(6, 0)).setFigure(new Knight(Player.WHITE, new Position(6, 0), this));
-		fields.get(new Position(1, 7)).setFigure(new Knight(Player.BLACK, new Position(1, 7), this));
-		fields.get(new Position(6, 7)).setFigure(new Knight(Player.BLACK, new Position(6, 7), this));
+//		fields.get(new Position(1, 0)).setFigure(new Knight(Player.WHITE, new Position(1, 0), this));
+//		fields.get(new Position(6, 0)).setFigure(new Knight(Player.WHITE, new Position(6, 0), this));
+//		fields.get(new Position(1, 7)).setFigure(new Knight(Player.BLACK, new Position(1, 7), this));
+//		fields.get(new Position(6, 7)).setFigure(new Knight(Player.BLACK, new Position(6, 7), this));
 
 		// erschaffe Damen:
-		fields.get(new Position(3, 0)).setFigure(new Queen(Player.WHITE, new Position(3, 0), this));
-		fields.get(new Position(3, 7)).setFigure(new Queen(Player.BLACK, new Position(3, 7), this));
+//		fields.get(new Position(3, 0)).setFigure(new Queen(Player.WHITE, new Position(3, 0), this));
+//		fields.get(new Position(3, 7)).setFigure(new Queen(Player.BLACK, new Position(3, 7), this));
 
-		// erschaffe Könige:
+		// erschaffe Kï¿½nige:
 		fields.get(new Position(4, 0)).setFigure(new King(Player.WHITE, new Position(4, 0), this));
 		fields.get(new Position(4, 7)).setFigure(new King(Player.BLACK, new Position(4, 7), this));
 
