@@ -14,7 +14,7 @@ import chess.IChessboard.Player;
 
 public class MasterTest {
 
-	@Test
+//	@Test
 	public void testChess() {
 		Chess chess = new Chess();
 		chess.setName("Schach");
