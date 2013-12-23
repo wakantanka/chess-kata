@@ -13,7 +13,7 @@ import java.awt.event.MouseEvent;
 public class Chess extends JFrame implements IChess {
 
 	private static final long serialVersionUID = 1L;
-	private Chessboard chessboard;
+	/* private */ Chessboard chessboard;
 	private JLabel lblStatus;
 
 	public static void main(String[] arg) {
@@ -50,13 +50,13 @@ public class Chess extends JFrame implements IChess {
 	public void status(Status status) {
 		switch (status) {
 		case NEXTTURN_WHITE:
-			lblStatus.setText("Weiß ist am Zug");
+			lblStatus.setText("Weiï¿½ ist am Zug");
 			break;
 		case NEXTTURN_BLACK:
 			lblStatus.setText("Schwarz ist am Zug");
 			break;
 		case WHITE_WINS:
-			lblStatus.setText("Weiß hat gewonnen");
+			lblStatus.setText("Weiï¿½ hat gewonnen");
 			break;
 		case BLACK_WINS:
 			lblStatus.setText("Schwarz hat gewonnen");
