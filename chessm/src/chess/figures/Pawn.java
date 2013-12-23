@@ -20,12 +20,12 @@ public class Pawn extends Figure { // Bauer
 			y = -1;
 			beginY = 6;
 		}
-		Chessfield field = chessboard.getFieldOnBoardAfterMove(position, 0, y);
+		Chessfield field = chessboard.getReachableFieldOnBoardAfterMove(position, 0, y);
 		if (field != null) {
 			if (!field.isFigureOnField(getPlayer())) {
 				reachablePositions.add(field.getPosition());
 				if (position.getY() == beginY) {
-					field = chessboard.getFieldOnBoardAfterMove(position, 0, 2*y);
+					field = chessboard.getReachableFieldOnBoardAfterMove(position, 0, 2*y);
 					if (!field.isFigureOnField(getPlayer())) {
 						reachablePositions.add(field.getPosition());
 					}
@@ -34,8 +34,8 @@ public class Pawn extends Figure { // Bauer
 
 		}
 
-		add(chessboard.getFieldOnBoardAfterMove(position, 1, y));
-		add(chessboard.getFieldOnBoardAfterMove(position, -1, y));
+		add(chessboard.getReachableFieldOnBoardAfterMove(position, 1, y));
+		add(chessboard.getReachableFieldOnBoardAfterMove(position, -1, y));
 	}
 
 	private void add(Chessfield field) {

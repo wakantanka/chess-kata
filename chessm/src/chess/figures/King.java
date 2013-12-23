@@ -14,14 +14,14 @@ public class King extends Figure {
 	
 	@Override
 	public void setReachablePositions(){
-		add(chessboard.getFieldOnBoardAfterMove(position, -1, -1));
-		add(chessboard.getFieldOnBoardAfterMove(position, -1, 0));
-		add(chessboard.getFieldOnBoardAfterMove(position, -1, 1));
-		add(chessboard.getFieldOnBoardAfterMove(position, 0, -1));
-		add(chessboard.getFieldOnBoardAfterMove(position, 0, 1));
-		add(chessboard.getFieldOnBoardAfterMove(position, 1, -1));
-		add(chessboard.getFieldOnBoardAfterMove(position, 1, 0));
-		add(chessboard.getFieldOnBoardAfterMove(position, 1, 1));
+		add(chessboard.getReachableFieldOnBoardAfterMove(position, -1, -1));
+		add(chessboard.getReachableFieldOnBoardAfterMove(position, -1, 0));
+		add(chessboard.getReachableFieldOnBoardAfterMove(position, -1, 1));
+		add(chessboard.getReachableFieldOnBoardAfterMove(position, 0, -1));
+		add(chessboard.getReachableFieldOnBoardAfterMove(position, 0, 1));
+		add(chessboard.getReachableFieldOnBoardAfterMove(position, 1, -1));
+		add(chessboard.getReachableFieldOnBoardAfterMove(position, 1, 0));
+		add(chessboard.getReachableFieldOnBoardAfterMove(position, 1, 1));
 	}
 	
 	private void add(Chessfield f){

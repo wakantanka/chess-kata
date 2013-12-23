@@ -15,9 +15,9 @@ import chess.figures.King;
 import chess.figures.Knight;
 import chess.figures.Pawn;
 //import chess.figures.Bishop;
-//import chess.figures.Knight;
+import chess.figures.Knight;
 //import chess.figures.Queen;
-//import chess.figures.Rook;
+import chess.figures.Rook;
 
 public class Chessboard extends JPanel implements IChessboard {
 
@@ -77,15 +77,32 @@ public class Chessboard extends JPanel implements IChessboard {
 		clearBoard(fields);
 
 		// erschaffe Bauern:
-		createPawns();
+//		createPawns();
 
 		// erschaffe Koenige:
 		createKings();
 		
 		 // erschaffe Springer:
-			createKnights();
+//			createKnights();
+
+			// erschaffe T�rme:
+			fields.get(new Position(0, 0)).setFigure(new Rook(Player.WHITE, new Position(0, 0), this));
+			fields.get(new Position(7, 0)).setFigure(new Rook(Player.WHITE, new Position(7, 0), this));
+			fields.get(new Position(0, 7)).setFigure(new Rook(Player.BLACK, new Position(0, 7), this));
+			fields.get(new Position(7, 7)).setFigure(new Rook(Player.BLACK, new Position(0, 7), this));
+
+			// erschaffe L�ufer:
+//			fields.get(new Position(2, 0)).setFigure(new Bishop(Player.WHITE, new Position(2, 0), this));
+//			fields.get(new Position(5, 0)).setFigure(new Bishop(Player.WHITE, new Position(5, 0), this));
+//			fields.get(new Position(2, 7)).setFigure(new Bishop(Player.BLACK, new Position(2, 7), this));
+//			fields.get(new Position(5, 7)).setFigure(new Bishop(Player.BLACK, new Position(5, 7), this));
 
 
+			// erschaffe Damen:
+//			fields.get(new Position(3, 0)).setFigure(new Queen(Player.WHITE, new Position(3, 0), this));
+//			fields.get(new Position(3, 7)).setFigure(new Queen(Player.BLACK, new Position(3, 7), this));
+
+			
 		setTurn(Player.BLACK);
 		nextTurn();
 	}
@@ -104,22 +121,6 @@ public class Chessboard extends JPanel implements IChessboard {
 	void createKings() {
 		fields.get(new Position(4, 0)).setFigure(new King(Player.WHITE, new Position(4, 0), this));
 		fields.get(new Position(4, 7)).setFigure(new King(Player.BLACK, new Position(4, 7), this));
-		// erschaffe T�rme:
-//		fields.get(new Position(0, 0)).setFigure(new Rook(Player.WHITE, new Position(0, 0), this));
-//		fields.get(new Position(7, 0)).setFigure(new Rook(Player.WHITE, new Position(7, 0), this));
-//		fields.get(new Position(0, 7)).setFigure(new Rook(Player.BLACK, new Position(0, 7), this));
-//		fields.get(new Position(7, 7)).setFigure(new Rook(Player.BLACK, new Position(0, 7), this));
-
-		// erschaffe L�ufer:
-//		fields.get(new Position(2, 0)).setFigure(new Bishop(Player.WHITE, new Position(2, 0), this));
-//		fields.get(new Position(5, 0)).setFigure(new Bishop(Player.WHITE, new Position(5, 0), this));
-//		fields.get(new Position(2, 7)).setFigure(new Bishop(Player.BLACK, new Position(2, 7), this));
-//		fields.get(new Position(5, 7)).setFigure(new Bishop(Player.BLACK, new Position(5, 7), this));
-
-
-		// erschaffe Damen:
-//		fields.get(new Position(3, 0)).setFigure(new Queen(Player.WHITE, new Position(3, 0), this));
-//		fields.get(new Position(3, 7)).setFigure(new Queen(Player.BLACK, new Position(3, 7), this));
 
 	
 	}
@@ -315,7 +316,7 @@ public class Chessboard extends JPanel implements IChessboard {
 
 	}
 
-	public Chessfield getFieldOnBoardAfterMove(Position position, int x, int y) {
+	public Chessfield getReachableFieldOnBoardAfterMove(Position position, int x, int y) {
 		return getFieldOnBoard(new Position(position.getX() + x, position.getY() + y));
 	}
 

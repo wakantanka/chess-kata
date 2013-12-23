@@ -14,14 +14,14 @@ public class Knight extends Figure {
 	
 	@Override
 	public void setReachablePositions(){
-		add(chessboard.getFieldOnBoardAfterMove(position, -2, -1));
-		add(chessboard.getFieldOnBoardAfterMove(position, -2, 1));
-		add(chessboard.getFieldOnBoardAfterMove(position, -1, 2));
-		add(chessboard.getFieldOnBoardAfterMove(position, -1, -2));
-		add(chessboard.getFieldOnBoardAfterMove(position, 1, -2));
-		add(chessboard.getFieldOnBoardAfterMove(position, 1, 2));
-		add(chessboard.getFieldOnBoardAfterMove(position, 2, -1));
-		add(chessboard.getFieldOnBoardAfterMove(position, 2, 1));
+		add(chessboard.getReachableFieldOnBoardAfterMove(position, -2, -1));
+		add(chessboard.getReachableFieldOnBoardAfterMove(position, -2, 1));
+		add(chessboard.getReachableFieldOnBoardAfterMove(position, -1, 2));
+		add(chessboard.getReachableFieldOnBoardAfterMove(position, -1, -2));
+		add(chessboard.getReachableFieldOnBoardAfterMove(position, 1, -2));
+		add(chessboard.getReachableFieldOnBoardAfterMove(position, 1, 2));
+		add(chessboard.getReachableFieldOnBoardAfterMove(position, 2, -1));
+		add(chessboard.getReachableFieldOnBoardAfterMove(position, 2, 1));
 	}
 	
 	private void add(Chessfield f){
