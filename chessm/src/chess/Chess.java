@@ -20,8 +20,8 @@ public class Chess extends JFrame implements IChess {
 		Chess chess = new Chess();
 		chess.setName("Schach");
 		chess.setTitle("Schach");
-		chess.setVisible(true);
 		chess.setSize(900, 900);
+		chess.setVisible(true);
 		chess.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 
