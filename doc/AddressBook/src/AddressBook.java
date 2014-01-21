@@ -29,6 +29,7 @@ public class AddressBook extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JTable table;
+	private int highestID = 0;
 	private Connection connect = null;
 	private Statement statement = null;
 	private ResultSet resultSet = null;
@@ -73,15 +74,16 @@ public class AddressBook extends JFrame {
 		// table.setDefaultRenderer(String.class, new MultiLineCellRenderer());
 		table.setPreferredScrollableViewportSize(new Dimension(864, 633));
 		table.setFillsViewportHeight(true);
-		table.setModel(new DefaultTableModel(0, 4));
+		table.setModel(new DefaultTableModel(0, 5));
 		
 		JButton btnHinzufgen = new JButton("Hinzuf\u00FCgen");
 		btnHinzufgen.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {try {
-				statement.execute("INSERT INTO adressen (name, phone, street, city) VALUES ('neu', '089', 'neu', 'neu')");
+				statement.execute("INSERT INTO address (name, phone, street, city) VALUES ('neu', 'neu', 'neu', 'neu')");
 				DefaultTableModel model = (DefaultTableModel) table.getModel();
-				model.addRow(new Object[] { "neu", "neu", "neu", "neu" });
+				model.addRow(new Object[] { "neu", "neu", "neu", "neu", highestID});
+				highestID++;
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
@@ -93,20 +95,26 @@ public class AddressBook extends JFrame {
 		TableColumnModel cModel = table.getColumnModel();
 
 		TableColumn nameColumn = cModel.getColumn(0);
-		nameColumn.setPreferredWidth(50);
+		nameColumn.setWidth(50);
 		nameColumn.setHeaderValue("Name");
 
 		TableColumn phoneColumn = cModel.getColumn(1);
-		phoneColumn.setPreferredWidth(50);
+		phoneColumn.setWidth(50);
 		phoneColumn.setHeaderValue("Telefon");
 
 		TableColumn streetColumn = cModel.getColumn(2);
-		streetColumn.setPreferredWidth(50);
+		streetColumn.setWidth(50);
 		streetColumn.setHeaderValue("Straﬂe");
 
 		TableColumn townColumn = cModel.getColumn(3);
-		townColumn.setPreferredWidth(50);
+		townColumn.setWidth(50);
 		townColumn.setHeaderValue("Stadt");
+		
+		TableColumn idColumn = cModel.getColumn(4);
+		idColumn.setMinWidth(0);
+		idColumn.setMaxWidth(0);
+		idColumn.setHeaderValue("");
+		
 
 		table.addMouseListener(new MouseAdapter() {
 			@Override
@@ -134,8 +142,9 @@ public class AddressBook extends JFrame {
 	        public void editingStopped(ChangeEvent e) {
 	        	try {
 					DefaultTableModel model = (DefaultTableModel) table.getModel();
+					int id = (int) model.getValueAt(table.getSelectedRow(), 4);
 					int i = table.getSelectedRow();
-					String sql = "UPDATE adressen SET name = '" + model.getValueAt(i, 0) + "', phone = '" + model.getValueAt(i, 1) + "', street = '" + model.getValueAt(i, 2) + "', city = '" + model.getValueAt(i, 3) + "' WHERE id = " + (table.getSelectedRow() + 1);
+					String sql = "UPDATE address SET name = '" + model.getValueAt(i, 0) + "', phone = '" + model.getValueAt(i, 1) + "', street = '" + model.getValueAt(i, 2) + "', city = '" + model.getValueAt(i, 3) + "' WHERE id = " + Integer.toString(id);
 					statement.execute(sql);
 				} catch (SQLException e1) {
 					e1.printStackTrace();
@@ -151,8 +160,9 @@ public class AddressBook extends JFrame {
 		deleteMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					statement.execute("DELETE FROM adressen WHERE id = " + (table.getSelectedRow() + 1));
 					DefaultTableModel model = (DefaultTableModel) table.getModel();
+					int id = (int) model.getValueAt(table.getSelectedRow(), 4);
+					statement.execute("DELETE FROM address WHERE id = " + Integer.toString(id));
 					model.removeRow(table.getSelectedRow());
 				} catch (Exception e2) {
 					e2.printStackTrace();
@@ -168,25 +178,31 @@ public class AddressBook extends JFrame {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			// Setup the connection with the DB
-			connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/adressdb?user=root"); //?user=...&password=...
+			connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/addressbook?user=root"); //?user=...&password=...
 
 			// Statements allow to issue SQL queries to the database
 			statement = connect.createStatement();
 
 			// Result set get the result of the SQL query
-			resultSet = statement.executeQuery("SELECT * FROM adressen");
+			resultSet = statement.executeQuery("SELECT * FROM address");
 			while (resultSet.next()) {
 				// It is possible to get the columns via name
 				// also possible to get the columns via the column number
 				// which starts at 1
 				// e.g. resultSet.getSTring(2);
+				
+				int id = resultSet.getInt("id");
 				String user = resultSet.getString("name");
 				String phone = resultSet.getString("phone");
 				String street = resultSet.getString("street");
 				String city = resultSet.getString("city");
 
 				DefaultTableModel model = (DefaultTableModel) table.getModel();
-				model.addRow(new Object[] { user, phone, street, city });
+				model.addRow(new Object[] { user, phone, street, city, id });
+				
+				if (highestID <= id){
+					highestID = id +1;
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
